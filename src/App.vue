@@ -2,6 +2,8 @@
   <div id="app">
     <div myprop="hello world"></div>
     <NavigationView />
+    <SubscribeForm />
+    <scrollUp />
     <FooterView />
   </div>
 
@@ -12,13 +14,17 @@
 
 import NavigationView from "./components/common/NavigationView.vue";
 import FooterView from "@/components/common/FooterView.vue";
+import scrollUp from "./components/common/scrollUp.vue";
+import SubscribeForm from "@/components/common/SubscribeForm.vue";
 
 
 export default {
   name: "App",
   components: {
     NavigationView,
-    FooterView
+    SubscribeForm,
+    FooterView,
+    scrollUp
 
 
 

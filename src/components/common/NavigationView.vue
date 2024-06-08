@@ -1,13 +1,13 @@
 <template>
   <header class="shadow-md font-sans tracking-wide relative z-50">
-    <section class="py-2 bg-[#0f0f0f] text-white text-right px-10">
+    <section class="py-2 bg-gradient-to-r from-green-300 to-purple-400 text-white text-right px-10">
       <p class="text-sm">
         <strong class="mx-3">vueviews</strong>providing information
         <strong class="mx-3">to junior developers</strong>vueviews
       </p>
     </section>
     <div class="nav1">
-      <div class="flex flex-wrap items-center justify-between gap-5 w-full">
+      <div class="flex flex-wrap items-center  justify-between gap-5  rounded-full w-full">
         <router-link to="/">
           <img :src="imagelogo" alt="logo" class="w-[80px] h-[60px]" />
         </router-link>
@@ -25,7 +25,7 @@
             </svg>
           </button>
 
-          <ul class="nav3">
+          <ul class="nav3 ">
             <li class="mb-6 hidden max-lg:block">
               <router-link to="/">
                 <img src="https://readymadeui.com/readymadeui.svg" alt="logo" class="w-36" />
@@ -35,10 +35,10 @@
               <router-link to="/" class="nav5">Home</router-link>
             </li>
             <li class="nav6">
-              <router-link to="/team" class="nav7">Team</router-link>
+              <router-link to="/team" class="nav7 hover:text-black">Team</router-link>
             </li>
             <li class="nav8">
-              <router-link to="/feature" class="nav9">Feature</router-link>
+              <router-link to="/feature" class="nav9 hover:text-black">Feature</router-link>
             </li>
             <li class="nav10">
               <router-link to="/blog" class="nav11">Blog</router-link>

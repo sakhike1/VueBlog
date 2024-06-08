@@ -138,8 +138,7 @@
                         </div>
                     </form>
                 </div>
-                <div
-                    class="md:h-full max-md:mt-10 bg-gradient-to-r from-gray-700 via-gray-900 to-black rounded-xl lg:p-12 p-8">
+                <div class="md:h-full max-md:mt-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl lg:p-12 p-8">
                     <img src="https://readymadeui.com/signin-image.webp" class="w-full h-full object-contain"
                         alt="login-image" />
                 </div>

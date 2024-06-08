@@ -1,5 +1,5 @@
 <template>
-    <section class="py-24">
+    <section class="py-24" data-aos="fade-up" data-aos-duration="3000">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h2 class="select2-dropdown">Our latest blog</h2>
             <div class="grid">
