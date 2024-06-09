@@ -9,8 +9,9 @@
 
                 <div
                     class="flex flex-col items-end justify-center text-right px-8 relative bg-gradient-to-r from-yellow-200 via-pink-200 to-pink-400 rounded-tl-[206px] z-20 before:absolute before:inset-0 before:!left-auto  before:w-2/3 before:rounded-bl-[206px] before:-z-10">
-                    <h3 class="font-bold sm:text-4xl text-2xl text-white">{{ name }}</h3>
-                    <p class="text-sm text-black mt-4">{{ form }}.</p>
+                    <h3 class="font-bold sm:text-4xl text-2xl text-white">unlock your vue potential</h3>
+                    <p class="text-sm text-black mt-4">Subscribe to our weekly newsletter to get the latest Vue.js
+                        updates.</p>
 
                     <form class="w-full mt-8" @submit.prevent="handleNewsletterSubscribe">
                         <div class="flex flex-col items-end w-full">
@@ -21,8 +22,8 @@
                                 class="mb-4 p-2 w-full rounded" :class="{ 'border-red-500': !newsletterEmailValid }"
                                 @blur="validateEmail">
                             <button type="submit"
-                                class="bg-gradient-to-b from-gray-900 to-gray-600  hover:bg-yellow-500 text-white py-2 px-8 font-semibold rounded w-max">
-                                Subscribe
+                                class="bg-gradient-to-b from-gray-900 to-gray-600  hover:bg-gray-200  text-white py-2 px-8 font-semibold rounded w-max">
+                                {{ name }}
                             </button>
                         </div>
                         <div v-if="showNewsletterAlert" class="mt-4 text-red-500">{{ newsletterAlertMessage }}</div>
@@ -33,12 +34,15 @@
     </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-
-const name = ref('unlock your vue pontetial');
-const form = ref('Subscribe to our weekly newsletter to get the latest Vue.js updates')
-
+<script>
+export default {
+    props: {
+        name: {
+            type: String,
+            required: true,
+        }
+    }
+}
 </script>
 
 <style scoped></style>

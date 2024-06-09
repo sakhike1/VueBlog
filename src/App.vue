@@ -2,35 +2,27 @@
   <div id="app">
     <div myprop="hello world"></div>
     <NavigationView />
-    <SubscribeForm />
+    <SubscribeForm :name="data.name" />
     <scrollUp />
     <FooterView />
   </div>
 
 </template>
 
-<script>
+<script setup>
 
 
 import NavigationView from "./components/common/NavigationView.vue";
 import FooterView from "@/components/common/FooterView.vue";
 import scrollUp from "./components/common/scrollUp.vue";
 import SubscribeForm from "@/components/common/SubscribeForm.vue";
+import { reactive } from "vue";
+
+const data = reactive({
+  name: 'Subscribe now'
+});
 
 
-export default {
-  name: "App",
-  components: {
-    NavigationView,
-    SubscribeForm,
-    FooterView,
-    scrollUp
-
-
-
-
-  },
-};
 </script>
 
 <style>
