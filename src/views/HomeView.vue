@@ -5,32 +5,23 @@
         <BlogSection />
 
 
-        <BannerView />
+        <BannerView :name="data.name" />
 
         <router-view />
 
     </div>
 </template>
 
-<script>
+<script setup>
 import HeroSection from "@/components/common/HeroSection.vue";
 import blogView from "@/components/common/blogView.vue";
 import BlogSection from "@/components/common/BlogSection.vue";
-import BannerView from "@/components/common/BannerView.vue"
+import BannerView from "@/components/common/BannerView.vue";
+import { reactive } from 'vue'
 
-
-export default {
-    name: "App",
-    components: {
-        HeroSection,
-        blogView,
-        BlogSection,
-
-        BannerView,
-
-
-    },
-};
+const data = reactive({
+    name: 'Get in touch'
+});
 </script>
 
 <style lang="scss" scoped></style>

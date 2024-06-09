@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div myprop="hello world"></div>
+    <div></div>
     <NavigationView />
     <SubscribeForm :name="data.name" />
     <scrollUp />

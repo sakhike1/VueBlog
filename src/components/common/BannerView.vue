@@ -30,7 +30,7 @@
           </p>
           <div class="mx-auto max-w-md sm:max-w-xl flex justify-center">
             <button class="outline-none h-12 px-5 rounded-xl bg-blue-600 text-white flex items-center">
-              Get In touch
+              {{ name }}
             </button>
           </div>
         </div>
@@ -40,7 +40,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    name: {
+      type: String,
+      required: true,
+
+
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>
