@@ -24,8 +24,7 @@
                                 class="mb-4 p-2 w-full rounded"
                                 :class="{ 'border-red-500': !newsletterEmailValid && showNewsletterAlert }"
                                 @blur="validateEmail" />
-                            <button type="submit"
-                                class="bg-gradient-to-b from-gray-900 to-gray-600 hover:bg-gray-200 text-white py-2 px-8 font-semibold rounded w-max">
+                            <button type="submit" class="submit-button">
                                 Subscribe
                             </button>
                         </div>
@@ -102,5 +101,20 @@ export default {
 input:focus {
     outline: none;
     border-color: transparent;
+}
+
+.submit-button {
+    background-image: linear-gradient(to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
+    color: white;
+    padding: 0.5rem 2rem;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #e0e0e0;
+    color: black;
+    transform: scale(1.1);
 }
 </style>
