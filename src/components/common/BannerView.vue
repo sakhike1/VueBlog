@@ -26,10 +26,11 @@
             so we can help you build it
           </h1>
           <p class="text-gray-700 dark:text-gray-300">
-            We provide consultation for small and medium sized companies
+            {{ welcome() }}
           </p>
           <div class="mx-auto max-w-md sm:max-w-xl flex justify-center">
-            <button class="outline-none h-12 px-5 rounded-xl bg-blue-600 text-white flex items-center">
+            <button
+              class="outline-none hover:scale-125 h-12 px-5  bg-gradient-to-r from-green-200 via-green-400 to-purple-700 rounded-full text-white flex items-center">
               {{ name }}
             </button>
           </div>
@@ -47,6 +48,11 @@ export default {
       required: true,
 
 
+    }
+  },
+  methods: {
+    welcome() {
+      return 'We provide consultation for small and medium sized companies'
     }
   }
 };

@@ -2,7 +2,7 @@
   <div id="app">
     <div></div>
     <NavigationView />
-    <SubscribeForm :name="data.name" />
+
     <scrollUp />
     <FooterView />
   </div>
@@ -15,12 +15,10 @@
 import NavigationView from "./components/common/NavigationView.vue";
 import FooterView from "@/components/common/FooterView.vue";
 import scrollUp from "./components/common/scrollUp.vue";
-import SubscribeForm from "@/components/common/SubscribeForm.vue";
-import { reactive } from "vue";
 
-const data = reactive({
-  name: 'Subscribe now'
-});
+
+
+
 
 
 </script>

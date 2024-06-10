@@ -90,7 +90,7 @@
                         </div>
                         <div class="mt-12">
                             <button type="button"
-                                class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                                class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-gradient-to-r from-indigo-300 to-purple-400 hover:bg-blue-700 focus:outline-none">
                                 Register account
                             </button>
                         </div>
@@ -138,7 +138,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="md:h-full max-md:mt-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl lg:p-12 p-8">
+                <div
+                    class="md:h-full max-md:mt-10 bg-gradient-to-r from-indigo-300 to-purple-400 rounded-xl lg:p-12 p-8">
                     <img src="https://readymadeui.com/signin-image.webp" class="w-full h-full object-contain"
                         alt="login-image" />
                 </div>
