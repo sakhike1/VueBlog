@@ -11,7 +11,7 @@
                     class="flex flex-col items-end justify-center text-right px-8 relative bg-gradient-to-r from-green-300 to-purple-400 rounded-tl-[206px] z-20 before:absolute before:inset-0 before:!left-auto before:w-2/3 before:rounded-bl-[206px] before:-z-10">
                     <h3 class="font-bold sm:text-4xl text-white">Unlock Your Vue Potential</h3>
                     <p class="text-sm text-black mt-4">
-                        Subscribe to our weekly newsletter to get the latest Vue.js updates.
+                        {{ yes() }}.
                     </p>
 
                     <form class="w-full mt-8" @submit.prevent="handleNewsletterSubscribe">
@@ -90,6 +90,11 @@ export default {
             handleNewsletterSubscribe,
         };
     },
+    methods: {
+        yes() {
+            return 'Subscribe to our weekly newsletter to get the latest Vue.js updates'
+        }
+    }
 };
 </script>
 

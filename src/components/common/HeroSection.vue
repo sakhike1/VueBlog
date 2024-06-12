@@ -15,7 +15,7 @@
                             </span>
                             <p class="flex items-center">
                                 all you need to know about
-                                <span class="text-green-700 ml-2"> vue.js</span>
+                                <span class="text-green-700 ml-2">{{ currentWord }}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                     class="w-5 h-5">
                                     <path fillRule="evenodd"
@@ -79,12 +79,36 @@ export default {
     data() {
         return {
             isFloating: true,
+            words: ['Vue.js', 'Computed Properties', 'Lifecycle Hooks', 'Props', 'Composables', 'Async Components', 'Custom Directives', 'Plugins', 'Slots'],  // Array of words
+            currentIndex: 0,
+            intervalId: null
         };
+
+    },
+    computed: {
+        currentWord() {
+            return this.words[this.currentIndex];
+        }
     },
     methods: {
         toggleFloating() {
             this.isFloating = !this.isFloating;
+        },
+        changeWord() {
+            this.currentIndex = (this.currentIndex + 1) % this.words.length;
+        },
+        startWordCycle() {
+            this.intervalId = setInterval(this.changeWord, 2000);  // Change word every second
+        },
+        stopWordCycle() {
+            clearInterval(this.intervalId);  // Clear the interval to stop cycling
         }
+    },
+    mounted() {
+        this.startWordCycle();
+    },
+    beforeUnmount() {
+        this.stopWordCycle();  // Clean up interval on component destruction
     }
 };
 

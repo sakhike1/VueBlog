@@ -9,7 +9,7 @@
                     Access DOM Elements in Vue 3 and the Composition API
                 </p>
             </div>
-            <div class="blockview3" data-aos="fade-up" data-aos-duration="3000">
+            <div class="blockview3" data-aos="fade-up hover:shadow-lg" data-aos-duration="3000">
                 <div class="relative w-full h-auto md:col-span-2 ">
                     <div class="blockview4 hover:shadow-xl">
                         <div class="p-5 xl:p-8 w-full md:w-1/2">
@@ -47,9 +47,10 @@
                             <img src="https://pagedone.io/asset/uploads/1695028873.png" alt="Header Tailwind Section"
                                 class="h-full ml-auto" />
                         </div>
+                        <div class="shine-overlay"></div>
                     </div>
                 </div>
-                <div class="relative w-full h-auto ">
+                <div class="relative w-full h-auto">
                     <div class="bg-indigo-500 rounded-2xl p-5 xl:p-8 h-full">
                         <div class="block hover:shadow-xl">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
@@ -78,9 +79,10 @@
                                 </svg>
                             </button>
                         </a>
+                        <div class="shine-overlay"></div>
                     </div>
                 </div>
-                <div class="relative w-full h-auto">
+                <div class="relative w-full h-auto  ">
                     <div class="bg-violet-500 rounded-2xl p-5 xl:p-8 h-full">
                         <div class="block hover:shadow-xl">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
@@ -111,6 +113,7 @@
                             </button>
                         </a>
                     </div>
+                    <div class="shine-overlay"></div>
                 </div>
             </div>
         </div>
@@ -121,4 +124,33 @@
 export default {};
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+@keyframes background-shine {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.relative {
+    position: relative;
+}
+
+.shine-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Match the image border radius */
+    background: linear-gradient(110deg, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0.2));
+    background-size: 200% 100%;
+    animation: background-shine 3s linear infinite;
+    pointer-events: none;
+    /* Ensure overlay doesn't block image interactions */
+}
+</style>

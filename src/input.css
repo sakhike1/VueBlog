@@ -157,7 +157,7 @@
 
 .nav1{
   @apply  
-  flex shadow-md py-4 px-4 sm:px-10  bg-gradient-to-r from-blue-500 to-blue-600 font-[sans-serif] min-h-[70px] tracking-wide relative z-50;
+  flex shadow-md py-4 px-4 sm:px-10  bg-gradient-to-r from-gray-900 via-gray-900 to-black font-[sans-serif] min-h-[70px] tracking-wide relative z-50;
 }
 
 .nav2{
@@ -179,7 +179,7 @@
 
 .nav5{
   @apply  
-  hover:text-[#0c141db4] text-[#f8f5f5] block font-semibold text-[15px];
+  hover:text-green-700 text-[#f8f5f5] block font-semibold text-[11px];
 }
 
 .nav6{
@@ -189,17 +189,17 @@
 
 .nav7{
   @apply  
-  text-[#0c141db4] text-white block font-semibold text-[15px];
+  hover:text-green-700 text-white block font-semibold text-[11px];
 }
 
 .nav8{
   @apply  
-  max-lg:border-b hover:text-[#0c141db4] text-white border-white max-lg:py-3 px-3;
+  max-lg:border-b hover:text-green-700 text-white border-white max-lg:py-3 px-3;
 }
 
 .nav9{
   @apply  
-  text-[#0c141db4] text-white block font-semibold text-[15px];
+  hover:text-green-700 text-white block font-semibold text-[11px];
 }
 
 .nav10{
@@ -209,7 +209,7 @@
 
 .nav11{
   @apply  
-  hover:text-[#262627] text-white block font-semibold text-[15px];
+  hover:text-green-700 text-white block font-semibold text-[11px];
 }
 
 .nav12{
@@ -219,7 +219,7 @@
 
 .nav13{
   @apply  
-  hover:text-[#262727] text-white block font-semibold text-[15px];
+  hover:text-green-700 text-white block font-semibold text-[11px];
 }
 
 .nav14{
@@ -229,16 +229,16 @@
 
 .nav15{
   @apply  
-  hover:text-[#1c1c1d] text-white block font-semibold text-[15px];
+  hover:text-green-700 text-white block font-semibold text-[11px];
 }
 
 .nav16{
   @apply  
-  px-4 py-2 text-sm rounded-full  text-white border border-[#f8eeee59] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#0d0d0e];
+  px-4 py-2 text-sm rounded-full  text-white border border-[#f8eeee59] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#6573f1];
 }
 
 .nav17{
   @apply  
-  px-4 py-2 text-sm rounded-full  text-white border border-[#e7dcdc4b]  transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#222122];
+  px-4 py-2 text-sm rounded-full  text-white border border-[#e7dcdc4b]  transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#6573f1];
 }
 

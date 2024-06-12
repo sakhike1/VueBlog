@@ -1,5 +1,5 @@
 <template>
-  <header class="shadow-md font-sans tracking-wide relative z-50">
+  <header class="shadow-md font-sans tracking-wide relative z-50 ">
     <section class="py-2 bg-gradient-to-r from-green-300 to-purple-400 text-white text-right px-10">
       <p class="text-sm">
         <strong class="mx-3">vueviews</strong>providing information
@@ -35,16 +35,16 @@
               <router-link to="/" class="nav5">Home</router-link>
             </li>
             <li class="nav6">
-              <router-link to="/team" class="nav7 hover:text-black">Team</router-link>
+              <a href="https://vuejsfeed.com/" class="nav7 hover:text-green-700">vuejsfeed</a>
             </li>
             <li class="nav8">
-              <router-link to="/feature" class="nav9 hover:text-black">Feature</router-link>
+              <a href="https://vueschool.io/" class="nav9 hover:text-green-700">vueschool</a>
             </li>
             <li class="nav10">
-              <router-link to="/blog" class="nav11">Blog</router-link>
+              <a href="https://vuejs.org/" class="nav11">vuejs.org</a>
             </li>
             <li class="nav12">
-              <router-link to="/about" class="nav13">About</router-link>
+              <a href="/https://www.vuemastery.com/" class="nav13">vuemastery</a>
             </li>
             <li class="nav14">
               <router-link to="/contact" class="nav15">Contact</router-link>
@@ -56,16 +56,16 @@
           <router-link to="/LoginView" class="nav16">Login</router-link>
           <router-link to="/registerView" class="nav17">Sign up</router-link>
 
-          <button @click="toggleMenu" id="toggleOpen" class="lg:hidden">
-            <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"></path>
-            </svg>
+          <button @click="toggleMenu" id="toggleOpen" class="lg:hidden fill-white">
+            <img :src="imagemenu" class="w-5 h-5 text-white" fill="#000" viewBox="0 0 20 20">
+
+
           </button>
         </div>
       </div>
+      <div class="shine-overlay"></div>
     </div>
+
   </header>
 
   <router-view />
@@ -77,6 +77,7 @@ export default {
   data() {
     return {
       imagelogo: require('@/assets/logo7.png'),
+      imagemenu: require('@/assets/ui.png'),
       isMenuOpen: false,
     }
   },
@@ -117,5 +118,36 @@ export default {
 .nav16,
 .nav17 {
   /* your styles */
+}
+
+
+
+@keyframes background-shine {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.relative {
+  position: relative;
+}
+
+.shine-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* Match the image border radius */
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0.2));
+  background-size: 200% 100%;
+  animation: background-shine 3s linear infinite;
+  pointer-events: none;
+  /* Ensure overlay doesn't block image interactions */
 }
 </style>
