@@ -1,7 +1,7 @@
 <template>
     <section class="py-24" data-aos="fade-up" data-aos-duration="3000">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 class="select2-dropdown">Our latest blog</h2>
+            <h2 class="select2-dropdown">{{ mine() }}</h2>
             <div class="grid">
                 <div v-for="post in paginatedPosts" :key="post.id" class="group" data-aos="fade-up"
                     data-aos-duration="3000">
@@ -37,6 +37,11 @@ export default {
     computed: {
         ...mapGetters(['paginatedPosts']),
     },
+    methods: {
+        mine() {
+            return 'Our latest Blog'
+        }
+    }
 };
 </script>
 

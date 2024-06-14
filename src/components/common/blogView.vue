@@ -84,7 +84,7 @@
                 </div>
                 <div class="relative w-full h-auto  ">
                     <div class="bg-violet-500 rounded-2xl p-5 xl:p-8 h-full">
-                        <div class="block hover:shadow-xl">
+                        <div class="block">
                             <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path

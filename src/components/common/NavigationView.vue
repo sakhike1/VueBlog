@@ -44,10 +44,10 @@
               <a href="https://vuejs.org/" class="nav11">vuejs.org</a>
             </li>
             <li class="nav12">
-              <a href="/https://www.vuemastery.com/" class="nav13">vuemastery</a>
+              <a href="https://www.vuemastery.com/" class="nav13">vuemastery</a>
             </li>
             <li class="nav14">
-              <router-link to="/contact" class="nav15">Contact</router-link>
+              <router-link to="/Contact" class="nav15">Contact</router-link>
             </li>
           </ul>
         </div>
