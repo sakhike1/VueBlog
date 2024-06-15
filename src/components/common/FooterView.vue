@@ -5,14 +5,15 @@
             <div
                 class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-8 py-10 max-sm:max-w-sm max-sm:mx-auto gap-y-8">
                 <div class="col-span-full mb-10 lg:col-span-2 lg:mb-0">
-                    <img class="h-20 w-20" :src="img20" alt="" />
+                    <router-link to="/">
+                        <img class="h-20 w-20" :src="img20" alt="" /> </router-link>
                     <p class="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left">
                         I created this blog to share some valuable resources I've come across regarding Vue.
                     </p>
-                    <a href="javascript:;"
+                    <router-link to="/Contact"
                         class="py-2.5 px-5 h-9 block w-fit bg-indigo-600 rounded-full shadow-sm text-xs text-white mx-auto transition-all duration-500 hover:bg-indigo-700 lg:mx-0">
                         Contact us
-                    </a>
+                    </router-link>
                 </div>
                 <!--End Col-->
                 <div class="lg:mx-auto text-left">
