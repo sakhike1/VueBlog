@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "axios": "^1.7.2",
     "core-js": "^3.8.3",
     "lightvue": "^1.5.1",
     "prettier": "^3.2.5",

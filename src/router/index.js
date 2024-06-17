@@ -35,6 +35,18 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/ContactPage.vue")
+  },
+  {
+    path: "/blog",
+    name: "BlogView",
+    meta: {
+    requiresAuth: true
+    },
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/BlogView.vue")
   }
 ];
 
@@ -42,5 +54,18 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+ router.beforeEach(async (to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)){
+
+    const token = localStorage.getItem('token')
+
+    if (token){
+      return next()
+    }
+  return next('/LoginView')
+  }
+  next()
+ })
 
 export default router
