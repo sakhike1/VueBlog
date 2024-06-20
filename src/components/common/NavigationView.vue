@@ -1,20 +1,21 @@
 <template>
-  <header class="shadow-md font-sans tracking-wide relative z-50 ">
-    <section class="py-2 bg-gradient-to-r from-green-300 to-purple-400 text-white text-right px-10">
+  <header class="shadow-md font-sans tracking-wide relative z-50">
+    <section class="py-2 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white text-right px-10">
       <p class="text-sm">
-        <strong class="mx-3">vueviews</strong>providing information
-        <strong class="mx-3">to junior developers</strong>vueviews
+        <strong :style="{ color: textColor }" class="mx-3">vueviews blog</strong>providing information
+        <strong :style="{ color: textColor }" class="mx-3">to junior developers</strong>
       </p>
+      <div class="shine-overlay"></div>
     </section>
     <div class="nav1">
-      <div class="flex flex-wrap items-center  justify-between gap-5  rounded-full w-full">
+      <div class="flex flex-wrap items-center justify-between gap-5 rounded-full w-full">
         <router-link to="/">
-          <img :src="imagelogo" alt="logo" class="w-[80px] h-[60px]" />
+          <img :src="imagelogo" alt="logo" class="w-[70px] h-[70px] object-fit: contain;" />
         </router-link>
 
         <div :class="{ nav2: true, hidden: !isMenuOpen }" id="collapseMenu">
           <button @click="toggleMenu" id="toggleClose"
-            class="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white  p-3">
+            class="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 fill-black" viewBox="0 0 320.591 320.591">
               <path
                 d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
@@ -25,7 +26,7 @@
             </svg>
           </button>
 
-          <ul class="nav3 ">
+          <ul class="nav3">
             <li class="mb-6 hidden max-lg:block">
               <router-link to="/">
                 <img :src="imagelogo" alt="logo" class="w-[80px] h-[60px]" />
@@ -58,19 +59,15 @@
 
           <button @click="toggleMenu" id="toggleOpen" class="lg:hidden fill-white">
             <img :src="imagemenu" class="w-5 h-5 text-white" fill="#000" viewBox="0 0 20 20">
-
-
           </button>
         </div>
       </div>
-      <div class="shine-overlay"></div>
+      <!-- <div class="shine-overlay"></div> -->
     </div>
-
   </header>
 
   <router-view />
 </template>
-
 
 <script>
 export default {
@@ -79,15 +76,25 @@ export default {
       imagelogo: require('@/assets/logo7.png'),
       imagemenu: require('@/assets/ui.png'),
       isMenuOpen: false,
-    }
+      textColor: '#000000'
+    };
   },
-
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },
+    getRandomColor() {
+      const colors = ['#010101', '#FAE000', '#E9E742'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    },
+    changeTextColor() {
+      this.textColor = this.getRandomColor();
+    }
   },
-}
+  mounted() {
+    setInterval(this.changeTextColor, 2000);
+  }
+};
 </script>
 
 <style scoped>
@@ -120,8 +127,6 @@ export default {
   /* your styles */
 }
 
-
-
 @keyframes background-shine {
   0% {
     background-position: 0 0;
@@ -142,12 +147,9 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-
-  /* Match the image border radius */
   background: linear-gradient(110deg, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0.2));
   background-size: 200% 100%;
   animation: background-shine 3s linear infinite;
   pointer-events: none;
-  /* Ensure overlay doesn't block image interactions */
 }
 </style>

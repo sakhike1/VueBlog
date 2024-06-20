@@ -4,7 +4,7 @@
       <div
         class="grid bg-gray-200  md:grid-cols-2 items-center border  gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
         <div class="md:max-w-md w-full sm:px-6 py-4">
-          <form>
+          <form @submit.prevent="LoginView">
             <div class="mb-12">
               <h3 class="text-3xl font-extrabold">Sign in</h3>
               <p class="text-sm mt-4 ">Don't have an account <router-link to="/registerView"
@@ -16,7 +16,7 @@
               <div class="relative flex items-center">
                 <input name="email" type="text" required
                   class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
-                  placeholder="Enter email" />
+                  placeholder="Enter email" v-model="email" />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                   class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
                   <defs>
@@ -38,7 +38,7 @@
             <div class="mt-8">
               <label class="text-xs block mb-2">Password</label>
               <div class="relative flex items-center">
-                <input name="password" type="password" required
+                <input name="password" type="password" required v-model="password"
                   class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
                   placeholder="Enter password" />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
@@ -51,7 +51,7 @@
             </div>
 
             <div class="mt-12">
-              <button type="button"
+              <button type="submit" value="register"
                 class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 hover:bg-blue-700 focus:outline-none">
                 Sign in
               </button>
@@ -69,13 +69,43 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 
-export default {
-  name: 'AboutView',
+const email = ref('')
+const password = ref('')
 
-};
+const LoginView = async () => {
+  if (!email.value || !password.value) {
+    return alert("Please fill in all fields")
+  }
+
+  try {
+    const res = await fetch('http://localhost:3333/LoginView', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value
+      })
+    })
+    const data = await res.json()
+    if (data.success) {
+      localStorage.setItem('token', data.token)
+      router.push('/blog')
+    } else {
+      alert(data.message)
+    }
+  } catch (error) {
+    console.error('Error during registration:', error)
+    alert('An error occurred during registration. Please try again later.')
+  }
+}
 </script>
 
 <style scoped>

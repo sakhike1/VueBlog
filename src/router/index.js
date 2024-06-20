@@ -1,7 +1,5 @@
-// router/index.js
-import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
@@ -10,62 +8,42 @@ const routes = [
     component: HomeView
   },
   {
-    path: "/LoginView",
-    name: "LoginView",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/LoginView.vue")
+    path: '/LoginView',
+    name: 'LoginView',
+    component: () => import(/* webpackChunkName: "LoginView" */ '../views/LoginView.vue')
   },
   {
-    path: "/registerView",
-    name: "registerView",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/registerView.vue")
+    path: '/registerView',
+    name: 'registerView',
+    component: () => import(/* webpackChunkName: "registerView" */ '../views/registerView.vue')
   },
   {
-    path: "/Contact",
-    name: "ContactPage",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/ContactPage.vue")
+    path: '/Contact',
+    name: 'ContactPage',
+    component: () => import(/* webpackChunkName: "ContactPage" */ '../views/ContactPage.vue')
   },
   {
-    path: "/blog",
-    name: "BlogView",
-    meta: {
-    requiresAuth: true
-    },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/BlogView.vue")
+    path: '/blog',
+    name: 'BlogView',
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "BlogView" */ '../views/BlogView.vue')
   }
-];
+]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
- router.beforeEach(async (to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)){
-
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
     const token = localStorage.getItem('token')
-
-    if (token){
+    if (token) {
       return next()
     }
-  return next('/LoginView')
+    return next('/LoginView')
   }
   next()
- })
+})
 
 export default router

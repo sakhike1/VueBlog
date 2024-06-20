@@ -4,6 +4,7 @@
             background:
                 'linear-gradient(143.6deg, rgba(192, 132, 252, 0) 20.79%, rgba(232, 121, 249, 0.26) 40.92%, rgba(204, 171, 238, 0) 70.35%)',
         }"></div>
+
         <div class="relative">
             <!-- Section -->
             <section>
@@ -67,6 +68,7 @@
                 </div>
             </section>
         </div>
+
     </div>
 </template>
 
@@ -132,5 +134,35 @@ export default {
 
 .floating-image {
     animation: float 3s infinite;
+}
+
+
+@keyframes background-shine {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+.relative {
+    position: relative;
+}
+
+.shine-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Match the image border radius */
+    background: linear-gradient(110deg, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0.2));
+    background-size: 200% 100%;
+    animation: background-shine 3s linear infinite;
+    pointer-events: none;
+    /* Ensure overlay doesn't block image interactions */
 }
 </style>

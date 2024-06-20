@@ -2,17 +2,20 @@
     <div class="font-[sans-serif] text-[#333] bg-gray-180" data-aos="fade-up" data-aos-duration="3000">
         <div class="min-h-screen flex flex-col items-center justify-center">
             <div
-                class="grid bg-gray-200  md:grid-cols-2 items-center border  gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
+                class="grid bg-gray-200 md:grid-cols-2 items-center border gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
                 <div class="md:max-w-md w-full sm:px-6 py-4">
-                    <form>
+                    <form @submit.prevent="Register">
                         <div class="mb-12">
                             <h3 class="text-3xl font-extrabold">Register</h3>
-                            <p class="text-sm mt-4 ">already have account <router-link to="/LoginView"
-                                    class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Login
-                                    here</router-link></p>
+                            <p class="text-sm mt-4">Already have an account?
+                                <router-link to="/LoginView"
+                                    class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">
+                                    Login here
+                                </router-link>
+                            </p>
                         </div>
                         <div>
-                            <label class="text-xs block mb-2">Name</label>
+                            <label class="text-xs block mb-2">Email</label>
                             <div class="relative flex items-center">
                                 <input name="email" type="text" required
                                     class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
@@ -36,11 +39,11 @@
                             </div>
                         </div>
                         <div>
-                            <label class="text-xs block mb-2">Email</label>
+                            <label class="text-xs block mb-2">Password</label>
                             <div class="relative flex items-center">
-                                <input name="email" type="text" required
+                                <input name="password" type="password" required
                                     class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
-                                    placeholder="Enter email" v-model="conf_email" />
+                                    placeholder="Enter Password" v-model="enterpassword" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
                                     <defs>
@@ -60,11 +63,11 @@
                             </div>
                         </div>
                         <div class="mt-8">
-                            <label class="text-xs block mb-2">Password</label>
+                            <label class="text-xs block mb-2">Confirm Password</label>
                             <div class="relative flex items-center">
-                                <input name="password" type="password" required
+                                <input name="conf_password" type="password" required
                                     class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
-                                    placeholder="Enter password" v-model="enterpassword" />
+                                    placeholder="Confirm password" v-model="conf_password" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
                                     <path
@@ -73,16 +76,12 @@
                                 </svg>
                             </div>
                         </div>
-
                         <div class="mt-12">
                             <button type="submit" value="register"
                                 class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 hover:bg-blue-700 focus:outline-none">
                                 Register account
-
                             </button>
                         </div>
-
-
                     </form>
                 </div>
                 <div
@@ -96,13 +95,46 @@
     </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 
-export default {
-    name: 'AboutView',
+const Enter_email = ref('')
+const enterpassword = ref('')
+const conf_password = ref('')
 
-};
+const Register = async () => {
+    if (!Enter_email.value || !enterpassword.value || !conf_password.value) {
+        return alert("Please fill in all fields")
+    }
+    if (enterpassword.value !== conf_password.value) {
+        return alert('Passwords do not match')
+    }
+    try {
+        const res = await fetch('http://localhost:3333/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: Enter_email.value,
+                password: enterpassword.value
+            })
+        })
+        const data = await res.json()
+        if (data.success) {
+            localStorage.setItem('token', data.token)
+            router.push('/blog')
+        } else {
+            alert(data.message)
+        }
+    } catch (error) {
+        console.error('Error during registration:', error)
+        alert('An error occurred during registration. Please try again later.')
+    }
+}
 </script>
 
 <style scoped>
@@ -136,12 +168,9 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-
-    /* Match the image border radius */
     background: linear-gradient(110deg, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0.2));
     background-size: 200% 100%;
     animation: background-shine 3s linear infinite;
     pointer-events: none;
-    /* Ensure overlay doesn't block image interactions */
 }
 </style>
