@@ -1,9 +1,9 @@
 <template>
   <header class="shadow-md font-sans tracking-wide relative z-50">
-    <section class="py-2 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 text-white text-right px-10">
-      <p class="text-sm">
-        <strong :style="{ color: textColor }" class="mx-3">vueviews blog</strong>providing information
-        <strong :style="{ color: textColor }" class="mx-3">to junior developers</strong>
+    <section class="py-2 bg-gradient-to-r from-yellow-200 via-pink-200 to-pink-400 text-white text-right px-10">
+      <p class="text-xs">
+        <strong :style="{ color: textColor }" class="mx-3 text-xs">Vue.js news in</strong>this blog i share information
+        <strong :style="{ color: textColor }" class="mx-3 text-xs">about Vue.js</strong>
       </p>
       <div class="shine-overlay"></div>
     </section>

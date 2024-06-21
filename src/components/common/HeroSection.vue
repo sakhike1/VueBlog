@@ -11,7 +11,8 @@
                 <div class="Herosection">
                     <div class="flex-none space-y-5 max-w-xl">
                         <a href="javascript:void(0)" class="herosection10">
-                            <span class="inline-block rounded-full px-3 py-1 bg-indigo-600 text-white">
+                            <span
+                                class="inline-block rounded-full px-3 py-1 bg-gradient-to-bl from-indigo-900 via-indigo-400 to-indigo-900 border text-white">
                                 News
                             </span>
                             <a href="https://vuejs.org/" class="flex items-center">

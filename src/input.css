@@ -28,10 +28,10 @@
   @apply  inline-flex gap-x-6 items-center rounded-full p-1 pr-6 border text-sm font-medium duration-150 hover:bg-white;
 }
 .herosection20{
-  @apply  py-2  px-5 border border-solid bg-black  rounded-full gap-2 text-xs text-white font-semibold flex items-center justify-between transition-all duration-500;
+  @apply  py-2  px-5 border border-solid bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500  rounded-full gap-2 text-xs text-white font-semibold flex items-center justify-between transition-all duration-500;
 }
 .herosection30{
-  @apply  py-2 px-5 border border-solid  bg-blue-700 rounded-full gap-2 text-xs text-white font-semibold flex items-center justify-between transition-all duration-500;
+  @apply  py-2 px-5 border border-solid  bg-gradient-to-bl from-indigo-900 via-indigo-400 to-indigo-900 rounded-full gap-2 text-xs text-white font-semibold flex items-center justify-between transition-all duration-500;
 }
 .bannercontainer{
   @apply  max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5;
