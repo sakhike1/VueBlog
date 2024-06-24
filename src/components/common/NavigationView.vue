@@ -76,7 +76,7 @@ export default {
       imagelogo: require('@/assets/logo7.png'),
       imagemenu: require('@/assets/ui.png'),
       isMenuOpen: false,
-      textColor: '#000000'
+      textColor: '#0AF4AD'
     };
   },
   methods: {
@@ -84,7 +84,7 @@ export default {
       this.isMenuOpen = !this.isMenuOpen;
     },
     getRandomColor() {
-      const colors = ['#010101', '#FAE000', '#E9E742'];
+      const colors = ['#18FD00', '#6E0AF4', '#18FD00'];
       return colors[Math.floor(Math.random() * colors.length)];
     },
     changeTextColor() {
