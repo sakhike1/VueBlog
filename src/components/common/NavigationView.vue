@@ -1,6 +1,6 @@
 <template>
   <header class="shadow-md font-sans tracking-wide relative z-50">
-    <section class="py-2 bg-gradient-to-r from-yellow-200 via-pink-200 to-pink-400 text-white text-right px-10">
+    <section class="py-2 bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400 text-white text-right px-10">
       <p class="text-xs">
         <strong :style="{ color: textColor }" class="mx-3 text-xs">Vue.js news in</strong>this blog i share information
         <strong :style="{ color: textColor }" class="mx-3 text-xs">about Vue.js</strong>
@@ -76,7 +76,7 @@ export default {
       imagelogo: require('@/assets/logo7.png'),
       imagemenu: require('@/assets/ui.png'),
       isMenuOpen: false,
-      textColor: '#0AF4AD'
+      textColor: '#333B36'
     };
   },
   methods: {
@@ -84,7 +84,7 @@ export default {
       this.isMenuOpen = !this.isMenuOpen;
     },
     getRandomColor() {
-      const colors = ['#18FD00', '#6E0AF4', '#18FD00'];
+      const colors = ['#333B36', '#0B1EF2'];
       return colors[Math.floor(Math.random() * colors.length)];
     },
     changeTextColor() {
