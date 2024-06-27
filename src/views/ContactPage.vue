@@ -15,7 +15,7 @@
                         <div
                             class="bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 dark:bg-[#162231] rounded-2xl border-[#F4F7FD] p-6 md:p-12">
                             <h2 class="text-2xl md:text-[45px] leading-none font-bold mb-4">Contact Us</h2>
-                            <p class="text-lg mb-12">For any help with you app or web development needs</p>
+                            <p class="text-lg mb-12">For any help with your app or web development needs</p>
 
                             <form @submit.prevent="validateForm">
                                 <div class="mb-4">
