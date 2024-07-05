@@ -157,7 +157,7 @@
 
 .nav1{
   @apply  
-  flex shadow-md py-4 px-4 sm:px-10  bg-gradient-to-r from-lime-600 via-yellow-300 to-red-600 font-[sans-serif] min-h-[70px] tracking-wide relative z-50;
+  flex shadow-md py-4 px-4 sm:px-10  bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-200 via-violet-600 to-sky-900 tracking-wide relative z-50;
 }
 
 .nav2{
