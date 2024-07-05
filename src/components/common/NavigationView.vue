@@ -1,12 +1,12 @@
 <template>
   <header class="shadow-md font-sans tracking-wide relative z-50">
-    <section class="py-2 bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400 text-white text-right px-10">
+    <!-- <section class="py-2 bg-gradient-to-r from-lime-600 via-yellow-300 to-red-600 text-white text-right px-10">
       <p class="text-xs">
         <strong :style="{ color: textColor }" class="mx-3 text-xs">Vue.js news in</strong>this blog i share information
         <strong :style="{ color: textColor }" class="mx-3 text-xs">about Vue.js</strong>
       </p>
       <div class="shine-overlay"></div>
-    </section>
+    </section> -->
     <div class="nav1">
       <div class="flex flex-wrap items-center justify-between gap-5 rounded-full w-full">
         <router-link to="/">
