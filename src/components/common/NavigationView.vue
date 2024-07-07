@@ -36,10 +36,10 @@
               <router-link to="/" class="nav5">Home</router-link>
             </li>
             <li class="nav6">
-              <a href="https://vuejsfeed.com/" class="nav7 hover:text-green-700">vuejsfeed</a>
+              <a href="https://vuejsfeed.com/" class="nav7 hover:text-white">vuejsfeed</a>
             </li>
             <li class="nav8">
-              <a href="https://vueschool.io/" class="nav9 hover:text-green-700">vueschool</a>
+              <a href="https://vueschool.io/" class="nav9 hover:text-white">vueschool</a>
             </li>
             <li class="nav10">
               <a href="https://vuejs.org/" class="nav11">vuejs.org</a>

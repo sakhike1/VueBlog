@@ -1,1 +1,95 @@
-A "ref" is a reactive data source that stores a value.
+<template>
+    <div class="text-slider">
+        <button @click="prevSlide" class="arrow left-arrow">‹</button>
+        <div class="slider-window">
+            <div class="slider-content" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+                <div class="slide" v-for="(text, index) in texts" :key="index">{{ text }}</div>
+            </div>
+        </div>
+        <button @click="nextSlide" class="arrow right-arrow">›</button>
+        <div class="indicators">
+            <span v-for="(text, index) in texts" :key="index"
+                :class="{ 'indicator': true, 'active': currentIndex === index }" @click="goToSlide(index)">{{ index + 1
+                }}</span>
+        </div>
+    </div>
+</template>
+
+
+<script>
+export default {
+    data() {
+        return {
+            currentIndex: 0,
+            texts: [
+                " It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, ",
+                " Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy",
+                " There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable",
+                " Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,"
+            ]
+        };
+    },
+    methods: {
+        prevSlide() {
+            this.currentIndex =
+                (this.currentIndex - 1 + this.texts.length) % this.texts.length;
+        },
+        nextSlide() {
+            this.currentIndex =
+                (this.currentIndex + 1) % this.texts.length;
+        },
+        goToSlide(index) {
+            this.currentIndex = index;
+        }
+    }
+};
+</script>
+
+
+<style scoped>
+.text-slider {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.slider-window {
+    overflow: hidden;
+    width: 100%;
+}
+
+.slider-content {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    text-align: center;
+}
+
+.indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.indicator {
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.indicator.active {
+    font-weight: bold;
+    color: blue;
+}
+</style>
