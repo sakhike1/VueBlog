@@ -52,7 +52,7 @@
   @apply  w-28 h-28 overflow-hidden flex rounded-xl relative blur-2xl;
 }
 .bannercontainer6{
-  @apply  mx-auto text-center max-w-xl md:max-w-2xl relative space-y-8;
+  @apply  mx-auto text-center max-w-xl md:max-w-2xl relative space-y-1;
 }
 .bannercontainer8{
   @apply  
