@@ -1,62 +1,70 @@
 <template>
-    <div>
-        <div data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000"
-            class="bg-gradient-to-tr from-gray-100 to-gray-200 font-sans min-h-[350px] m-10 relative max-w-6xl mx-auto rounded overflow-hidden">
-            <div class="grid lg:grid-cols-2 w-full h-full absolute inset-0">
-                <div class="p-4 max-lg:hidden">
-                    <img src="https://readymadeui.com/image-1.webp" class="object-cover w-full h-full" alt="img" />
-                </div>
+    <section class="flex bg-gradient-to-t from-[#141521] items-center relative to-[#141521]">
+        <div class="shine-overlay"></div>
+        <svg class="absolute" fill="none" height="100%" viewBox="0 0 400 400" width="100%"
+            xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_17_17)">
+                <g filter="url(#filter0_f_17_17)">
+                    <path d="M128.6 0H0V322.2L51.5 67.5L128.6 0Z" fill="#EB03FF"></path>
+                    <path d="M0 322.2V400H240H320L51.5 67.5L0 322.2Z" fill="#FF0F9F"></path>
+                    <path d="M320 400H400V78.75L51.5 67.5L320 400Z" fill="#3A0D84"></path>
+                    <path d="M400 0H128.6L51.5 67.5L400 78.75V0Z" fill="#FAD8F4"></path>
+                </g>
+            </g>
+            <defs>
+                <filter color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse" height="720.666"
+                    id="filter0_f_17_17" width="720.666" x="-160.333" y="-160.333">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feBlend in="SourceGraphic" in2="BackgroundImageFix" mode="normal" result="shape"></feBlend>
+                    <feGaussianBlur result="effect1_foregroundBlur_17_17" stdDeviation="80.1666"></feGaussianBlur>
+                </filter>
+            </defs>
+        </svg>
+        <div
+            class="relative items-center w-full gap-12 p-8 mx-auto lg:inline-flex lg:p-20 max-w-7xl rounded-3xl lg:py-32">
+            <div class="max-w-4xl mx-auto text-center">
+                <div>
 
-                <div
-                    class="flex flex-col items-end justify-center text-right px-8 relative bg-gradient-to-r from-green-300 to-purple-400 rounded-tl-[206px] z-20 before:absolute before:inset-0 before:!left-auto before:w-2/3 before:rounded-bl-[206px] before:-z-10">
-                    <h3 class="font-bold sm:text-4xl text-white">Unlock Your Vue Potential</h3>
-                    <p class="text-sm text-white mt-4">
-                        {{ yes() }}.
+                    <p class="max-w-3xl mx-auto mt-4 lg:text-ms text-slate-100">
+                        Stay informed about the latest updates and releases in the Vue.js ecosystem
+                        Discover inspiring projects and stories from the Vue.js community
                     </p>
-
-                    <form class="w-full mt-8" @submit.prevent="handleNewsletterSubscribe">
-                        <div class="flex flex-col items-end w-full">
-                            <input type="text" v-model="newsletterName" placeholder="Your Name"
-                                class="mb-4 p-2 w-full rounded"
-                                :class="{ 'border-red-500': !newsletterNameValid && showNewsletterAlert }"
-                                @blur="validateName" />
-                            <input type="email" v-model="newsletterEmail" placeholder="Your Email"
-                                class="mb-4 p-2 w-full rounded"
-                                :class="{ 'border-red-500': !newsletterEmailValid && showNewsletterAlert }"
-                                @blur="validateEmail" />
-                            <button type="submit" class="submit-button">
-                                Subscribe
+                </div>
+                <div class="flex flex-col justify-center gap-3 mt-10 sm:flex-row">
+                    <form @submit.prevent="handleNewsletterSubscribe"
+                        class="w-full lg:w-auto bg-white/20 lg:mx-auto p-1.5 rounded-full">
+                        <div class="w-full lg:flex lg:items-center">
+                            <div class="shrink">
+                                <input v-model="newsletterEmail" aria-label="Email address" autocomplete="email"
+                                    class="block w-full p-3 text-white bg-transparent border border-transparent appearance-none rounded-full focus:border-slate-500 focus:outline-none focus:ring-slate-500 placeholder:text-slate-300 sm:text-sm"
+                                    placeholder="Email address" required type="email">
+                            </div>
+                            <button
+                                class="w-full lg:w-auto mr-1 active:bg-white active:text-white before:transition-colors bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-200 via-violet-600 to-sky-900 flex-none font-medium hover:bg-indigo-900 hover:text-white inline-flex justify-center lg:ml-4 outline-2 outline-offset-2 px-5 py-2.5 relative rounded-full text-white hover:scale-105"
+                                type="submit">
+                                <span>Join the newsletter</span>
                             </button>
                         </div>
-                        <div v-if="showNewsletterAlert" class="mt-4 text-red-500">{{ newsletterAlertMessage }}</div>
                     </form>
                 </div>
+                <div v-if="showNewsletterAlert" class="mt-3">
+                    <span class="text-white">{{ newsletterAlertMessage }}</span>
+                </div>
+
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
 import { ref } from 'vue';
 
 export default {
-    props: {
-        name: {
-            type: String,
-            required: true,
-        },
-    },
     setup() {
-        const newsletterName = ref('');
         const newsletterEmail = ref('');
         const showNewsletterAlert = ref(false);
         const newsletterAlertMessage = ref('');
-        const newsletterNameValid = ref(true);
         const newsletterEmailValid = ref(true);
-
-        const validateName = () => {
-            newsletterNameValid.value = !!newsletterName.value.trim();
-        };
 
         const validateEmail = () => {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -64,37 +72,28 @@ export default {
         };
 
         const handleNewsletterSubscribe = () => {
-            validateName();
             validateEmail();
 
-            if (newsletterNameValid.value && newsletterEmailValid.value) {
+            if (newsletterEmailValid.value) {
                 showNewsletterAlert.value = false;
                 alert('Subscription successful!');
-                location.reload();
+                window.location.reload();
                 // Handle the subscription logic here
             } else {
-                newsletterAlertMessage.value = 'Please enter a valid name and email.';
+                newsletterAlertMessage.value = 'Please enter a valid email.';
                 showNewsletterAlert.value = true;
             }
         };
 
         return {
-            newsletterName,
             newsletterEmail,
             showNewsletterAlert,
             newsletterAlertMessage,
-            newsletterNameValid,
             newsletterEmailValid,
-            validateName,
             validateEmail,
             handleNewsletterSubscribe,
         };
     },
-    methods: {
-        yes() {
-            return 'Subscribe to our weekly newsletter to get the latest Vue.js updates'
-        }
-    }
 };
 </script>
 
@@ -108,18 +107,32 @@ input:focus {
     border-color: transparent;
 }
 
-.submit-button {
-    background-image: linear-gradient(to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
-    color: white;
-    padding: 0.5rem 2rem;
-    font-weight: 600;
-    border-radius: 50px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+@keyframes background-shine {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
 }
 
-.submit-button:hover {
-    background-color: #e0e0e0;
-    color: black;
-    transform: scale(1.1);
+.relative {
+    position: relative;
+}
+
+.shine-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Match the image border radius */
+    background: linear-gradient(110deg, rgba(255, 255, 255, 0.2) 45%, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0.2));
+    background-size: 200% 100%;
+    animation: background-shine 3s linear infinite;
+    pointer-events: none;
+    /* Ensure overlay doesn't block image interactions */
 }
 </style>

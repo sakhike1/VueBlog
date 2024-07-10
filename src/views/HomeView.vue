@@ -6,8 +6,9 @@
 
 
         <BannerView :name="data.name" />
-        <SubscribeForm :name="data.name" />
         <TextSlide />
+        <SubscribeForm :name="data.name" />
+
 
 
         <router-view />
