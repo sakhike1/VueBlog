@@ -4,7 +4,7 @@
       <div
         class="grid bg-gray-200  md:grid-cols-2 items-center border  gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
         <div class="md:max-w-md w-full sm:px-6 py-4">
-          <form @submit.prevent="LoginView">
+          <form @submit.prevent="submitLogin">
             <div class="mb-12">
               <h3 class="text-3xl font-extrabold">Sign in</h3>
               <p class="text-sm mt-4 ">Don't have an account <router-link to="/registerView"
@@ -71,40 +71,22 @@
 
 <script setup>
 import { ref } from 'vue'
+import axios from 'axios'
 import { useRouter } from 'vue-router'
 
-const router = useRouter()
+const router = useRouter();
+const form = ref({
+  email: '',
+  password: '',
+})
 
-const email = ref('')
-const password = ref('')
+const submitLogin = async () => {
+  await axios.post('/login', {
+    email: form.value.email,
+    password: form.value.password
+  })
 
-const LoginView = async () => {
-  if (!email.value || !password.value) {
-    return alert("Please fill in all fields")
-  }
-
-  try {
-    const res = await fetch('http://localhost:3333/LoginView', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email.value,
-        password: password.value
-      })
-    })
-    const data = await res.json()
-    if (data.success) {
-      localStorage.setItem('token', data.token)
-      router.push('/blog')
-    } else {
-      alert(data.message)
-    }
-  } catch (error) {
-    console.error('Error during registration:', error)
-    alert('An error occurred during registration. Please try again later.')
-  }
+  router.push('/');
 }
 </script>
 

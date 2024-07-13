@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import './input.css';
 import store from './store/store';
+import 'axios';
  // Adjust the path if necessary
 
 createApp(App)

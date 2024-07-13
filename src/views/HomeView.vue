@@ -8,6 +8,7 @@
         <BannerView :name="data.name" />
         <TextSlide />
         <SubscribeForm :name="data.name" />
+        <ImageSlider />
 
 
 
@@ -23,6 +24,7 @@ import BlogSection from "@/components/common/BlogSection.vue";
 import BannerView from "@/components/common/BannerView.vue";
 import TextSlide from "@/components/common/TextSlide.vue";
 import SubscribeForm from "@/components/common/SubscribeForm.vue";
+import ImageSlider from "@/components/common/ImageSlider.vue";
 import { reactive } from "vue";
 
 
