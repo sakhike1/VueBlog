@@ -4,7 +4,7 @@
             <div
                 class="grid bg-gray-200 md:grid-cols-2 items-center border gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
                 <div class="md:max-w-md w-full sm:px-6 py-4">
-                    <form @submit.prevent="Register">
+                    <form @submit.prevent="saveData">
                         <div class="mb-12">
                             <h3 class="text-3xl font-extrabold">Register</h3>
                             <p class="text-sm mt-4">Already have an account?
@@ -19,7 +19,7 @@
                             <div class="relative flex items-center">
                                 <input name="email" type="text" required
                                     class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
-                                    placeholder="Enter email" v-model="Enter_email" />
+                                    placeholder="Enter email" v-model="student.email" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
                                     <defs>
@@ -39,11 +39,11 @@
                             </div>
                         </div>
                         <div>
-                            <label class="text-xs block mb-2">Password</label>
+                            <label class="text-xs block mb-2">Name</label>
                             <div class="relative flex items-center">
-                                <input name="password" type="password" required
+                                <input name="Name" type="name" required
                                     class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
-                                    placeholder="Enter Password" v-model="enterpassword" />
+                                    placeholder="Enter Name" v-model="student.name" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
                                     <defs>
@@ -63,11 +63,11 @@
                             </div>
                         </div>
                         <div class="mt-8">
-                            <label class="text-xs block mb-2">Confirm Password</label>
+                            <label class="text-xs block mb-2">Password</label>
                             <div class="relative flex items-center">
-                                <input name="conf_password" type="password" required
+                                <input name="password" type="password" required
                                     class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
-                                    placeholder="Confirm password" v-model="conf_password" />
+                                    placeholder="password" v-model="student.password" />
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                                     class="w-[18px] h-[18px] absolute right-2 cursor-pointer" viewBox="0 0 128 128">
                                     <path
@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="mt-12">
-                            <button type="submit" value="register"
+                            <button type="submit" value="Save"
                                 class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 hover:bg-blue-700 focus:outline-none">
                                 Register account
                             </button>
@@ -95,44 +95,41 @@
     </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+<script>
+import axios from 'axios';
 
-const router = useRouter()
 
-const Enter_email = ref('')
-const enterpassword = ref('')
-const conf_password = ref('')
 
-const Register = async () => {
-    if (!Enter_email.value || !enterpassword.value || !conf_password.value) {
-        return alert("Please fill in all fields")
-    }
-    if (enterpassword.value !== conf_password.value) {
-        return alert('Passwords do not match')
-    }
-    try {
-        const res = await fetch('http://localhost:3333/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: Enter_email.value,
-                password: enterpassword.value
-            })
-        })
-        const data = await res.json()
-        if (data.success) {
-            localStorage.setItem('token', data.token)
-            router.push('/blog')
-        } else {
-            alert(data.message)
+export default {
+    name: 'RegisterView',
+    data() {
+        return {
+            student: {
+                email: '',
+                name: '',
+                password: ''
+            }
         }
-    } catch (error) {
-        console.error('Error during registration:', error)
-        alert('An error occurred during registration. Please try again later.')
+    },
+    mounted() {
+        console.log("mounted() called.......");
+    },
+    methods: {
+        saveData() {
+            axios.post("http://127.0.0.1:8000/api/register", this.student)
+                .then(({ data }) => {
+                    console.log(data);
+                    try {
+                        alert('saved')
+                    } catch (err) {
+                        alert("failed")
+                    }
+                })
+                .catch(err => {
+                    alert("failed to save data")
+                    console.error(err);
+                });
+        }
     }
 }
 </script>

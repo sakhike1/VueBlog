@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import helloWorld from  '@/components/common/helloWorld'
 
 const routes = [
   {
@@ -21,6 +22,12 @@ const routes = [
     path: '/Contact',
     name: 'ContactPage',
     component: () => import(/* webpackChunkName: "ContactPage" */ '../views/ContactPage.vue')
+  },
+  {
+    path: '/helloWorld',
+    name: 'helloWorld',
+    component: helloWorld
+    
   },
   {
     path: '/blog',

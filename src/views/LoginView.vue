@@ -4,7 +4,7 @@
       <div
         class="grid bg-gray-200  md:grid-cols-2 items-center border  gap-4 max-w-6xl w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
         <div class="md:max-w-md w-full sm:px-6 py-4">
-          <form @submit.prevent="submitLogin">
+          <form @submit.prevent="LoginData">
             <div class="mb-12">
               <h3 class="text-3xl font-extrabold">Sign in</h3>
               <p class="text-sm mt-4 ">Don't have an account <router-link to="/registerView"
@@ -16,7 +16,7 @@
               <div class="relative flex items-center">
                 <input name="email" type="text" required
                   class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
-                  placeholder="Enter email" v-model="email" />
+                  placeholder="Enter email" v-model="student.email" />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
                   class="w-[18px] h-[18px] absolute right-2" viewBox="0 0 682.667 682.667">
                   <defs>
@@ -38,7 +38,7 @@
             <div class="mt-8">
               <label class="text-xs block mb-2">Password</label>
               <div class="relative flex items-center">
-                <input name="password" type="password" required v-model="password"
+                <input name="password" type="password" required v-model="student.password"
                   class="w-full text-sm border-b border-gray-300 focus:border-[#333] px-2 py-3 outline-none"
                   placeholder="Enter password" />
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb"
@@ -51,7 +51,7 @@
             </div>
 
             <div class="mt-12">
-              <button type="submit" value="register"
+              <button type="submit"
                 class="w-full shadow-xl py-2.5 px-4 text-sm font-semibold rounded-full text-white bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 hover:bg-blue-700 focus:outline-none">
                 Sign in
               </button>
@@ -69,24 +69,46 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import axios from 'axios'
-import { useRouter } from 'vue-router'
+<script>
+import axios from 'axios';
 
-const router = useRouter();
-const form = ref({
-  email: '',
-  password: '',
-})
 
-const submitLogin = async () => {
-  await axios.post('/login', {
-    email: form.value.email,
-    password: form.value.password
-  })
 
-  router.push('/');
+export default {
+  name: 'LoginView',
+  data() {
+    return {
+      student: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  mounted() {
+    console.log("mounted() called.......");
+  },
+  methods: {
+    LoginData() {
+      axios.post("http://127.0.0.1:8000/api/login", this.student)
+        .then(({ data }) => {
+          console.log(data);
+          try {
+            if (data.status === true) {
+              alert("login Successfully")
+              this.$router.push({ name: 'helloWorld' })
+            } else {
+              console.log(" login Failed")
+            }
+          } catch (err) {
+            alert("failed")
+          }
+        })
+        .catch(err => {
+          alert("Error, please try again ")
+          console.error(err);
+        });
+    }
+  }
 }
 </script>
 
