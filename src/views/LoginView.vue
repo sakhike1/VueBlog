@@ -72,8 +72,6 @@
 <script>
 import axios from 'axios';
 
-
-
 export default {
   name: 'LoginView',
   data() {
@@ -81,7 +79,8 @@ export default {
       student: {
         email: '',
         password: ''
-      }
+      },
+      errorMessage: ''
     }
   },
   mounted() {
@@ -92,19 +91,22 @@ export default {
       axios.post("http://127.0.0.1:8000/api/login", this.student)
         .then(({ data }) => {
           console.log(data);
-          try {
-            if (data.status === true) {
-              alert("login Successfully")
-              this.$router.push({ name: 'helloWorld' })
+          if (data.status === true) {
+            alert("Login Successfully");
+            this.$router.push({ name: 'helloWorld' });
+          } else {
+            this.errorMessage = data.message;
+            if (data.message === 'Incorrect password') {
+              alert('Incorrect password');
             } else {
-              console.log(" login Failed")
+              alert(data.message);
             }
-          } catch (err) {
-            alert("failed")
+            console.log("Login Failed: " + data.message);
           }
         })
         .catch(err => {
-          alert("Error, please try again ")
+          this.errorMessage = "Error, please try again.";
+          alert(this.errorMessage);
           console.error(err);
         });
     }

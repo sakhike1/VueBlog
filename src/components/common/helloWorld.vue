@@ -120,7 +120,7 @@
                 </div>
                 <div class="mt-8 text-left">
                     <router-link to="/Contact"
-                        class="px-6 py-3 text-lg font-medium text-white bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-200 via-violet-600 to-sky-900 hover:bg-blue-700">Contact
+                        class="px-6 py-3 hover:scale-125 text-lg font-medium text-white bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-200 via-violet-600 to-sky-900 ">Contact
                         Me</router-link>
                 </div>
             </div>
@@ -157,7 +157,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(110deg, rgba(12, 12, 12, 0.712) 45%, rgba(19, 18, 18, 0.836) 55%, rgba(15, 15, 15, 0.637));
+    background: linear-gradient(110deg, rgba(12, 12, 12, 0.712) 45%, rgba(201, 196, 196, 0.836) 55%, rgba(15, 15, 15, 0.637));
     background-size: 200% 100%;
     animation: background-shine 3s linear infinite;
     pointer-events: none;
