@@ -157,7 +157,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(110deg, rgba(12, 12, 12, 0.712) 45%, rgba(201, 196, 196, 0.836) 55%, rgba(15, 15, 15, 0.637));
+    background: linear-gradient(110deg, rgba(12, 12, 12, 0.712) 45%, rgba(71, 68, 68, 0.836) 55%, rgba(15, 15, 15, 0.637));
     background-size: 200% 100%;
     animation: background-shine 3s linear infinite;
     pointer-events: none;
